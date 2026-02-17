@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Башкирия — Открой для себя природу!</title>
+    <meta name="description" content="Откройте для себя красоту Башкирии: горы, пещеры, озёра и уникальные природные достопримечательности. Забронируйте тур уже сегодня!" />
+    <meta name="author" content="Башкирия Туризм" />
+    <meta property="og:title" content="Башкирия — Открой для себя природу!" />
+    <meta property="og:description" content="Горы, пещеры, озёра и уникальные природные достопримечательности Башкирии" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --green: #4a7c59;
+        --green-dark: #2d5a3d;
+        --green-light: #6aab7e;
+        --gold: #c9a227;
+        --gold-light: #e8c547;
+        --cream: #f9f5f0;
+        --dark: #1a1a1a;
+        --text: #333;
+        --text-light: #666;
+        --white: #fff;
+        --shadow: 0 4px 24px rgba(0,0,0,0.12);
+        --radius: 16px;
+        --transition: 0.3s ease;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        color: var(--text);
+        background: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(74,124,89,0.15);
+        transition: var(--transition);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+      }
+      .nav-logo {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--green-dark);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+      .nav-logo span { color: var(--gold); }
+      .nav-links {
+        display: flex;
+        gap: 8px;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 50px;
+        transition: var(--transition);
+      }
+      .nav-links a:hover { background: rgba(74,124,89,0.1); color: var(--green-dark); }
+      .nav-cta {
+        background: var(--green-dark) !important;
+        color: var(--white) !important;
+        padding: 10px 24px !important;
+      }
+      .nav-cta:hover { background: var(--green) !important; transform: translateY(-1px); }
+
+      .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+      .burger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: #0d1f14;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('images/yamantau.jpg');
+        background-size: cover;
+        background-position: center 40%;
+        opacity: 0.55;
+        transform: scale(1.05);
+        animation: zoomOut 20s ease forwards;
+      }
+      @keyframes zoomOut {
+        from { transform: scale(1.05); }
+        to   { transform: scale(1.0); }
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(13,31,20,0.75) 0%, rgba(0,0,0,0.2) 50%, rgba(13,31,20,0.5) 100%);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        padding-top: 80px;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(201,162,39,0.2);
+        border: 1px solid rgba(201,162,39,0.5);
+        color: var(--gold-light);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 8px 18px;
+        border-radius: 50px;
+        margin-bottom: 28px;
+        animation: fadeUp 0.8s ease both;
+      }
+      .hero-badge::before { content: '✦'; }
+      .hero h1 {
+        font-size: clamp(2.8rem, 7vw, 5.5rem);
+        font-weight: 900;
+        line-height: 1.05;
+        color: var(--white);
+        letter-spacing: -2px;
+        margin-bottom: 24px;
+        animation: fadeUp 0.8s 0.15s ease both;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--gold-light);
+        position: relative;
+      }
+      .hero-desc {
+        font-size: 1.15rem;
+        color: rgba(255,255,255,0.8);
+        max-width: 560px;
+        line-height: 1.7;
+        margin-bottom: 44px;
+        animation: fadeUp 0.8s 0.3s ease both;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.8s 0.45s ease both;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--gold);
+        color: var(--dark);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 16px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 8px 32px rgba(201,162,39,0.4);
+      }
+      .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,162,39,0.5); }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--white);
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 16px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        border: 2px solid rgba(255,255,255,0.4);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
+
+      .hero-stats {
+        position: absolute;
+        bottom: 48px;
+        right: 48px;
+        display: flex;
+        gap: 32px;
+        animation: fadeUp 0.8s 0.6s ease both;
+      }
+      .stat {
+        text-align: center;
+        color: var(--white);
+      }
+      .stat-num {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--gold-light);
+        line-height: 1;
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.75rem;
+        opacity: 0.7;
+        letter-spacing: 0.5px;
+        margin-top: 4px;
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255,255,255,0.6);
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        animation: fadeUp 1s 1s ease both;
+      }
+      .scroll-arrow {
+        width: 28px;
+        height: 28px;
+        border: 2px solid rgba(255,255,255,0.4);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: bounce 2s infinite;
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(6px); }
+      }
+
+      /* ── SECTIONS ── */
+      section { padding: 100px 24px; }
+      .section-inner { max-width: 1200px; margin: 0 auto; }
+
+      .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--green); }
+      .section-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 900;
+        letter-spacing: -1px;
+        color: var(--dark);
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      .section-title em { font-style: normal; color: var(--green); }
+      .section-desc {
+        color: var(--text-light);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        max-width: 560px;
+        margin-bottom: 56px;
+      }
+
+      /* ── FEATURES ── */
+      .features { background: var(--cream); }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 28px;
+      }
+      .feature-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 36px 32px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+      .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--green), var(--gold));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: var(--transition);
+      }
+      .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.15); border-color: rgba(74,124,89,0.15); }
+      .feature-card:hover::before { transform: scaleX(1); }
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, var(--green), var(--green-light));
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 16px rgba(74,124,89,0.3);
+      }
+      .feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+      .feature-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.65; }
+
+      /* ── ATTRACTIONS ── */
+      .attractions-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+      }
+      .att-card {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+      }
+      .att-card:nth-child(1) { grid-column: 1 / 8; grid-row: 1; }
+      .att-card:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
+      .att-card:nth-child(3) { grid-column: 1 / 5; grid-row: 2; }
+      .att-card:nth-child(4) { grid-column: 5 / 9; grid-row: 2; }
+      .att-card:nth-child(5) { grid-column: 9 / 13; grid-row: 2; }
+      .att-card:nth-child(6) { grid-column: 1 / 7; grid-row: 3; }
+      .att-card:nth-child(7) { grid-column: 7 / 13; grid-row: 3; }
+
+      .att-img {
+        width: 100%;
+        height: 100%;
+        min-height: 280px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+      .att-card:nth-child(1) .att-img { min-height: 380px; }
+      .att-card:hover .att-img { transform: scale(1.06); }
+
+      .att-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 50%);
+        transition: var(--transition);
+      }
+      .att-card:hover .att-overlay { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%); }
+
+      .att-info {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 24px 24px 28px;
+        transform: translateY(8px);
+        transition: var(--transition);
+      }
+      .att-card:hover .att-info { transform: translateY(0); }
+      .att-tag {
+        display: inline-block;
+        background: rgba(201,162,39,0.9);
+        color: var(--dark);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 50px;
+        margin-bottom: 8px;
+      }
+      .att-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
+      .att-desc {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.8);
+        line-height: 1.5;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .att-card:hover .att-desc { max-height: 80px; }
+
+      /* ── MAP SECTION ── */
+      .map-section { background: var(--cream); }
+      .map-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .map-img-wrap {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .map-img-wrap img { width: 100%; display: block; }
+      .map-badge {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: var(--white);
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--green-dark);
+        box-shadow: var(--shadow);
+      }
+      .map-facts { display: flex; flex-direction: column; gap: 20px; }
+      .fact-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px;
+        background: var(--white);
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        transition: var(--transition);
+      }
+      .fact-item:hover { transform: translateX(6px); box-shadow: var(--shadow); }
+      .fact-icon {
+        width: 44px; height: 44px; min-width: 44px;
+        background: linear-gradient(135deg, var(--green), var(--green-light));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+      .fact-text h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+      .fact-text p { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+
+      /* ── SEASONS ── */
+      .seasons-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 40px;
+        background: var(--cream);
+        padding: 6px;
+        border-radius: 50px;
+        width: fit-content;
+      }
+      .tab-btn {
+        padding: 12px 28px;
+        border-radius: 50px;
+        border: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        background: transparent;
+        color: var(--text-light);
+      }
+      .tab-btn.active {
+        background: var(--white);
+        color: var(--green-dark);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      }
+      .tab-btn:hover:not(.active) { color: var(--green); }
+      .season-content { display: none; }
+      .season-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+      .season-img {
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .season-img img { width: 100%; display: block; height: 420px; object-fit: cover; }
+      .season-info h3 {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--dark);
+        margin-bottom: 16px;
+        letter-spacing: -0.5px;
+      }
+      .season-info p {
+        color: var(--text-light);
+        line-height: 1.7;
+        font-size: 1rem;
+        margin-bottom: 28px;
+      }
+      .season-activities { display: flex; flex-direction: column; gap: 10px; }
+      .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--text);
+      }
+      .activity-item::before {
+        content: '✓';
+        width: 24px; height: 24px; min-width: 24px;
+        background: var(--green);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      /* ── GALLERY ── */
+      .gallery { background: var(--dark); padding-top: 100px; padding-bottom: 100px; }
+      .gallery .section-title { color: var(--white); }
+      .gallery .section-desc { color: rgba(255,255,255,0.6); }
+      .gallery .section-label { color: var(--gold-light); }
+      .gallery .section-label::before { background: var(--gold); }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 1;
+        cursor: pointer;
+      }
+      .gallery-item:nth-child(1), .gallery-item:nth-child(5) {
+        grid-column: span 2;
+        aspect-ratio: 16/9;
+      }
+      .gallery-item img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+      .gallery-item:hover img { transform: scale(1.08); }
+      .gallery-item-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+      .gallery-item:hover .gallery-item-overlay { background: rgba(0,0,0,0.3); }
+      .gallery-zoom {
+        width: 48px; height: 48px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: scale(0.7);
+        transition: var(--transition);
+      }
+      .gallery-item:hover .gallery-zoom { opacity: 1; transform: scale(1); }
+
+      /* ── TESTIMONIALS ── */
+      .testimonials { background: var(--cream); }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+      }
+      .review-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 32px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+      .review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+      .stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+      .review-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--text);
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+      .review-text::before { content: '"'; font-size: 2rem; color: var(--green-light); line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+      .reviewer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .reviewer-avatar {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--green), var(--gold));
+        display: flex; align-items: center; justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+      .reviewer-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+      .reviewer-from { font-size: 0.8rem; color: var(--text-light); }
+
+      /* ── CTA ── */
+      .cta-section {
+        background: linear-gradient(135deg, var(--green-dark), var(--green));
+        text-align: center;
+        padding: 100px 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        width: 600px; height: 600px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        top: -200px; right: -100px;
+      }
+      .cta-section::after {
+        content: '';
+        position: absolute;
+        width: 400px; height: 400px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        bottom: -150px; left: -50px;
+      }
+      .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+      .cta-section .section-label { color: rgba(255,255,255,0.7); justify-content: center; }
+      .cta-section .section-label::before { background: rgba(255,255,255,0.5); }
+      .cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 900;
+        color: var(--white);
+        letter-spacing: -1px;
+        margin-bottom: 16px;
+        line-height: 1.1;
+      }
+      .cta-section p {
+        color: rgba(255,255,255,0.75);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 44px;
+      }
+      .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+      .btn-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--white);
+        color: var(--green-dark);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 16px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      }
+      .btn-white:hover { background: var(--cream); transform: translateY(-2px); }
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--white);
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 16px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        border: 2px solid rgba(255,255,255,0.35);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--dark);
+        color: rgba(255,255,255,0.65);
+        padding: 60px 24px 32px;
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+      .footer-brand .nav-logo { margin-bottom: 12px; display: block; font-size: 1.5rem; }
+      .footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 280px; }
+      .footer-col h4 {
+        color: var(--white);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+      .footer-col ul a {
+        text-decoration: none;
+        color: rgba(255,255,255,0.55);
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+      .footer-col ul a:hover { color: var(--white); }
+      .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+      }
+      .footer-bottom a { color: var(--gold-light); text-decoration: none; }
+
+      /* ── LIGHTBOX ── */
+      .lightbox {
+        position: fixed; inset: 0; z-index: 1000;
+        background: rgba(0,0,0,0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .lightbox.open { display: flex; }
+      .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+      .lightbox-close {
+        position: absolute;
+        top: 24px; right: 24px;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        border: none; cursor: pointer;
+        color: white; font-size: 1.2rem;
+        display: flex; align-items: center; justify-content: center;
+        transition: var(--transition);
+      }
+      .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+      /* ── MOBILE MENU ── */
+      .mobile-menu {
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--white);
+        padding: 20px 24px 28px;
+        box-shadow: var(--shadow);
+        transform: translateY(-110%);
+        transition: transform 0.35s ease;
+        z-index: 99;
+      }
+      .mobile-menu.open { transform: translateY(0); }
+      .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+      .mobile-menu ul a {
+        display: block;
+        padding: 12px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+      .mobile-menu ul a:hover { background: var(--cream); color: var(--green-dark); }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .nav-links { display: none; }
+        .burger { display: flex; }
+        .hero-stats { position: static; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+        .attractions-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .att-card { grid-column: span 1 !important; grid-row: auto !important; }
+        .map-container { grid-template-columns: 1fr; }
+        .season-content.active { grid-template-columns: 1fr; }
+        .footer-top { grid-template-columns: 1fr 1fr; }
+        .gallery-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 600px) {
+        section { padding: 72px 20px; }
+        .hero-stats { gap: 20px; }
+        .footer-top { grid-template-columns: 1fr; gap: 32px; }
+        .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+        .gallery-grid { grid-template-columns: 1fr; }
+        .gallery-item:nth-child(1), .gallery-item:nth-child(5) { grid-column: span 1; aspect-ratio: 16/9; }
+        .hero-stats { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">Башкир<span>ия</span></a>
+        <ul class="nav-links">
+          <li><a href="#attractions">Достопримечательности</a></li>
+          <li><a href="#seasons">Сезоны</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#about">О регионе</a></li>
+          <li><a href="#contact" class="nav-cta">Забронировать</a></li>
+        </ul>
+        <div class="burger" onclick="toggleMenu()" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#attractions" onclick="toggleMenu()">Достопримечательности</a></li>
+        <li><a href="#seasons" onclick="toggleMenu()">Сезоны</a></li>
+        <li><a href="#gallery" onclick="toggleMenu()">Галерея</a></li>
+        <li><a href="#about" onclick="toggleMenu()">О регионе</a></li>
+        <li><a href="#contact" onclick="toggleMenu()" style="color:var(--green-dark);font-weight:700;">Забронировать тур</a></li>
+      </ul>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Республика Башкортостан</div>
+        <h1>Открой для себя<br><em>дикую природу</em><br>Урала</h1>
+        <p class="hero-desc">
+          Горные хребты, кристальные реки, таинственные пещеры и бескрайние леса — Башкирия ждёт тех, кто ищет настоящее приключение.
+        </p>
+        <div class="hero-actions">
+          <a href="#attractions" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Начать путешествие
+          </a>
+          <a href="#gallery" class="btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Посмотреть галерею
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">143K+</span><div class="stat-label">км² природы</div></div>
+          <div class="stat"><span class="stat-num">900+</span><div class="stat-label">озёр и рек</div></div>
+          <div class="stat"><span class="stat-num">47</span><div class="stat-label">заповедников</div></div>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        Прокрутите вниз
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <div class="section-inner">
+        <div class="section-label">Почему Башкирия</div>
+        <h2 class="section-title">Всё для<br><em>незабываемого</em> отдыха</h2>
+        <p class="section-desc">От горнолыжных курортов до экотроп — здесь каждый найдёт своё приключение в любое время года.</p>
+        <div class="features-grid reveal">
+          <div class="feature-card">
+            <div class="feature-icon">🏔️</div>
+            <h3>Горный туризм</h3>
+            <p>Покорите вершины Южного Урала. Гора Ямантау (1640 м) — высшая точка региона — открывает вид на сотни километров тайги.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🕳️</div>
+            <h3>Пещерный туризм</h3>
+            <p>Шульган-Таш — пещера с петроглифами возрастом 16 000 лет. Один из объектов списка кандидатов ЮНЕСКО.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌊</div>
+            <h3>Водный отдых</h3>
+            <p>Сплавы по реке Белой, рыбалка на озере Аслыкуль и купание в чистейших горных родниках — Красный Ключ.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⛷️</div>
+            <h3>Зимние виды спорта</h3>
+            <p>Абзаково и Банное — современные горнолыжные курорты с развитой инфраструктурой и трассами для всех уровней.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🍯</div>
+            <h3>Башкирский мёд</h3>
+            <p>Знаменитый во всём мире башкирский мёд — попробуйте уникальный вкус горного разнотравья прямо у пасечников.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏕️</div>
+            <h3>Экотуризм</h3>
+            <p>Национальные парки «Башкирия» и «Шульган-Таш» с нетронутой природой, экотропами и авторскими тур-программами.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATTRACTIONS -->
+    <section id="attractions">
+      <div class="section-inner">
+        <div class="section-label">Места силы</div>
+        <h2 class="section-title">Главные<br><em>достопримечательности</em></h2>
+        <p class="section-desc">Семь мест, которые обязательно нужно увидеть в Башкирии — от высоких гор до подземных дворцов.</p>
+        <div class="attractions-grid reveal">
+
+          <div class="att-card">
+            <img src="images/yamantau.jpg" alt="Гора Ямантау" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Горы</span>
+              <div class="att-title">Гора Ямантау</div>
+              <div class="att-desc">Высшая точка Башкирии и всего Южного Урала — 1640 метров над уровнем моря. Священная гора башкирского народа.</div>
+            </div>
+          </div>
+
+          <div class="att-card">
+            <img src="images/abzakovo.jpg" alt="Абзаково" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Горнолыжный курорт</span>
+              <div class="att-title">Абзаково</div>
+              <div class="att-desc">Один из лучших горнолыжных курортов России с 17 трассами, современными подъёмниками и развитой инфраструктурой.</div>
+            </div>
+          </div>
+
+          <div class="att-card">
+            <img src="images/shulgan-tash.jpg" alt="Пещера Шульган-Таш" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Пещера</span>
+              <div class="att-title">Шульган-Таш</div>
+              <div class="att-desc">Пещера с уникальными палеолитическими рисунками возрастом 16 000 лет — кандидат на включение в список ЮНЕСКО.</div>
+            </div>
+          </div>
+
+          <div class="att-card">
+            <img src="images/iremel.jpg" alt="Гора Иремель" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Горы</span>
+              <div class="att-title">Иремель</div>
+              <div class="att-desc">Священная гора башкирского эпоса. Популярный маршрут для треккинга с видами на хребты Южного Урала.</div>
+            </div>
+          </div>
+
+          <div class="att-card">
+            <img src="images/aslykul.jpg" alt="Озеро Аслыкуль" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Озеро</span>
+              <div class="att-title">Аслыкуль</div>
+              <div class="att-desc">Крупнейшее естественное озеро Башкирии площадью 23 км². Идеальное место для отдыха и наблюдения за птицами.</div>
+            </div>
+          </div>
+
+          <div class="att-card">
+            <img src="images/krasny-kluch.jpg" alt="Красный Ключ" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Родник</span>
+              <div class="att-title">Красный Ключ</div>
+              <div class="att-desc">Один из крупнейших карстовых источников Европы с дебитом воды до 14 м³/сек. Памятник природы федерального значения.</div>
+            </div>
+          </div>
+
+          <div class="att-card">
+            <img src="images/muradymovo.jpg" alt="Мурадымово" class="att-img" />
+            <div class="att-overlay"></div>
+            <div class="att-info">
+              <span class="att-tag">Ущелье</span>
+              <div class="att-title">Мурадымово</div>
+              <div class="att-desc">Живописное ущелье с реками, скалами и пещерами. Уникальный природный комплекс с богатой флорой и фауной.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="map-section" id="about">
+      <div class="section-inner">
+        <div class="map-container">
+          <div class="map-img-wrap reveal">
+            <img src="images/bashkortostan-map.jpg" alt="Карта Башкортостана" />
+            <div class="map-badge">📍 Республика Башкортостан</div>
+          </div>
+          <div class="map-facts reveal">
+            <div class="section-label">О регионе</div>
+            <h2 class="section-title" style="margin-bottom: 28px;">Сердце<br><em>Южного Урала</em></h2>
+            <div class="fact-item">
+              <div class="fact-icon">📐</div>
+              <div class="fact-text">
+                <h4>Площадь: 142 947 км²</h4>
+                <p>Один из крупнейших регионов России — больше, чем Греция или Болгария.</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">👥</div>
+              <div class="fact-text">
+                <h4>Население: ~4 млн человек</h4>
+                <p>Многонациональный регион, где живут башкиры, русские, татары и десятки других народов.</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">🌿</div>
+              <div class="fact-text">
+                <h4>Природные зоны</h4>
+                <p>Горная тайга, степи, лесостепи и смешанные леса — уникальное биоразнообразие.</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">🏙️</div>
+              <div class="fact-text">
+                <h4>Столица: Уфа</h4>
+                <p>Современный миллионный город у слияния рек Белой и Уфы с богатой историей и культурой.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEASONS -->
+    <section id="seasons">
+      <div class="section-inner">
+        <div class="section-label">Когда ехать</div>
+        <h2 class="section-title">Башкирия<br>в <em>любое время</em> года</h2>
+        <p class="section-desc">Каждый сезон открывает новые грани этого удивительного края — выберите свой идеальный момент.</p>
+
+        <div class="seasons-tabs">
+          <button class="tab-btn active" onclick="switchTab('summer', this)">☀️ Лето</button>
+          <button class="tab-btn" onclick="switchTab('winter', this)">❄️ Зима</button>
+          <button class="tab-btn" onclick="switchTab('spring', this)">🌸 Весна</button>
+          <button class="tab-btn" onclick="switchTab('autumn', this)">🍂 Осень</button>
+        </div>
+
+        <div id="tab-summer" class="season-content active">
+          <div class="season-img"><img src="images/muradymovo.jpg" alt="Лето в Башкирии" /></div>
+          <div class="season-info">
+            <h3>Лето — пора активных путешествий</h3>
+            <p>С июня по август Башкирия раскрывается во всей красе. Зелёные горы, цветущие поляны, тёплые реки и озёра. Идеальное время для сплавов, треккинга и палаточных лагерей.</p>
+            <div class="season-activities">
+              <div class="activity-item">Сплав по реке Белой (Агидель)</div>
+              <div class="activity-item">Восхождение на Иремель и Ямантау</div>
+              <div class="activity-item">Посещение пещеры Шульган-Таш</div>
+              <div class="activity-item">Купание в Красном Ключе и Аслыкуле</div>
+              <div class="activity-item">Конные прогулки и экотуры</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-winter" class="season-content">
+          <div class="season-img"><img src="images/abzakovo.jpg" alt="Зима в Башкирии" /></div>
+          <div class="season-info">
+            <h3>Зима — время горных склонов</h3>
+            <p>Декабрь–март — горнолыжный сезон. Курорты Абзаково и Банное принимают тысячи лыжников и сноубордистов. Снежные зимние леса создают сказочную атмосферу.</p>
+            <div class="season-activities">
+              <div class="activity-item">Горные лыжи и сноуборд в Абзаково</div>
+              <div class="activity-item">Снегоходные туры по тайге</div>
+              <div class="activity-item">Зимняя рыбалка на озёрах</div>
+              <div class="activity-item">Посещение термальных источников</div>
+              <div class="activity-item">Новогодние программы и праздники</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-spring" class="season-content">
+          <div class="season-img"><img src="images/krasny-kluch.jpg" alt="Весна в Башкирии" /></div>
+          <div class="season-info">
+            <h3>Весна — пробуждение природы</h3>
+            <p>Апрель и май — пора цветения степей и первых походов. Реки полноводны, горы покрываются первой зеленью, а воздух наполнен запахом цветов.</p>
+            <div class="season-activities">
+              <div class="activity-item">Наблюдение за цветением тюльпанов</div>
+              <div class="activity-item">Сплавы в половодье</div>
+              <div class="activity-item">Бёрдвотчинг — перелётные птицы</div>
+              <div class="activity-item">Фотографические туры</div>
+              <div class="activity-item">Вертолётные экскурсии</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-autumn" class="season-content">
+          <div class="season-img"><img src="images/yamantau.jpg" alt="Осень в Башкирии" /></div>
+          <div class="season-info">
+            <h3>Осень — золото уральских лесов</h3>
+            <p>Сентябрь и октябрь — пик красоты горных лесов. Золото и пурпур берёз и осин, первый снег на вершинах и чистый прозрачный воздух делают осень незабываемой.</p>
+            <div class="season-activities">
+              <div class="activity-item">Треккинг в золотом лесу</div>
+              <div class="activity-item">Охота за осенними пейзажами</div>
+              <div class="activity-item">Сбор ягод и грибов</div>
+              <div class="activity-item">Рыбалка на горных реках</div>
+              <div class="activity-item">Этнические туры по сёлам</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+      <div class="section-inner">
+        <div class="section-label">Фотогалерея</div>
+        <h2 class="section-title" style="color:#fff;">Красота<br><em style="color:var(--gold-light)">Башкирии</em> в кадре</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.6); margin-bottom:40px;">Живые снимки природы, которые вдохновят вас на путешествие.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox('images/yamantau.jpg')">
+            <img src="images/yamantau.jpg" alt="Ямантау" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/shulgan-tash.jpg')">
+            <img src="images/shulgan-tash.jpg" alt="Шульган-Таш" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/iremel.jpg')">
+            <img src="images/iremel.jpg" alt="Иремель" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/abzakovo.jpg')">
+            <img src="images/abzakovo.jpg" alt="Абзаково" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/krasny-kluch.jpg')">
+            <img src="images/krasny-kluch.jpg" alt="Красный Ключ" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/aslykul.jpg')">
+            <img src="images/aslykul.jpg" alt="Аслыкуль" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/muradymovo.jpg')">
+            <img src="images/muradymovo.jpg" alt="Мурадымово" loading="lazy" />
+            <div class="gallery-item-overlay"><div class="gallery-zoom">🔍</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="reviews">
+      <div class="section-inner">
+        <div class="section-label">Отзывы туристов</div>
+        <h2 class="section-title">Что говорят<br>те, кто <em>уже побывал</em></h2>
+        <p class="section-desc">Реальные впечатления от путешественников, открывших для себя Башкирию.</p>
+        <div class="testimonials-grid reveal">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">Сплав по Агидели оказался лучшим приключением в моей жизни. Горы, чистая вода, тишина и звёздное небо ночью — это невозможно передать словами. Обязательно вернусь!</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">АМ</div>
+              <div><div class="reviewer-name">Андрей Морозов</div><div class="reviewer-from">Москва • Август 2024</div></div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">Пещера Шульган-Таш произвела на меня неизгладимое впечатление. Стоишь перед рисунками, которым 16 000 лет, и просто молчишь. Природный заповедник — настоящее сокровище.</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">ЕК</div>
+              <div><div class="reviewer-name">Елена Козлова</div><div class="reviewer-from">Санкт-Петербург • Июль 2024</div></div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">Абзаково — неожиданно хороший курорт! Трассы разнообразные, очередей почти нет, природа вокруг просто потрясающая. Отличная альтернатива европейским горнолыжным курортам.</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">ДС</div>
+              <div><div class="reviewer-name">Дмитрий Сидоров</div><div class="reviewer-from">Казань • Январь 2024</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+      <div class="cta-inner">
+        <div class="section-label">Начните прямо сейчас</div>
+        <h2>Ваше путешествие начинается здесь</h2>
+        <p>Свяжитесь с нами, и мы подберём идеальный тур в Башкирию с учётом ваших интересов, бюджета и сезона.</p>
+        <div class="cta-actions">
+          <a href="mailto:info@bashkiriaturizm.ru" class="btn-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Написать нам
+          </a>
+          <a href="tel:+73472000000" class="btn-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="#" class="nav-logo">Башкир<span>ия</span></a>
+            <p>Откройте для себя один из красивейших регионов России — Республику Башкортостан. Горы, пещеры, реки и бескрайние леса ждут вас.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Навигация</h4>
+            <ul>
+              <li><a href="#home">Главная</a></li>
+              <li><a href="#attractions">Достопримечательности</a></li>
+              <li><a href="#seasons">Сезоны</a></li>
+              <li><a href="#gallery">Галерея</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Направления</h4>
+            <ul>
+              <li><a href="#attractions">Гора Ямантау</a></li>
+              <li><a href="#attractions">Абзаково</a></li>
+              <li><a href="#attractions">Шульган-Таш</a></li>
+              <li><a href="#attractions">Иремель</a></li>
+              <li><a href="#attractions">Аслыкуль</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Контакты</h4>
+            <ul>
+              <li><a href="mailto:info@bashkiriaturizm.ru">info@bashkiriaturizm.ru</a></li>
+              <li><a href="tel:+73472000000">+7 (347) 200-00-00</a></li>
+              <li><a href="#">г. Уфа, ул. Ленина, 1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2024 Башкирия Туризм. Все права защищены.</span>
+          <span>Сделано с ❤️ для путешественников</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+    </div>
+
+    <script>
+      // Mobile menu
+      function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('open');
+      }
+
+      // Season tabs
+      function switchTab(season, btn) {
+        document.querySelectorAll('.season-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + season).classList.add('active');
+        btn.classList.add('active');
+      }
+
+      // Lightbox
+      function openLightbox(src) {
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Nav shadow on scroll
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.1)' : 'none';
+      });
+    </script>
+
+  </body>
+</html>
